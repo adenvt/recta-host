@@ -2,11 +2,11 @@ import SerialPort from 'serialport'
 import Adapter from '../base/adapter.js'
 
 export default class Serial extends Adapter {
-    constructor(options) {
+    constructor(option = {}) {
         super()
 
-        this.device = new SerialPort(options.comport, {
-          baudRate: options.baudrate,
+        this.device = new SerialPort(option.comport, {
+          baudRate: option.baudrate,
           autoOpen: false
         })
         this.device.on('open', () => {
