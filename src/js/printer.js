@@ -2,11 +2,12 @@ import EventEmitter from 'events'
 import Adapter from './base/adapter.js'
 import Usb from './adapter/usb.js'
 import Serial from './adapter/serial.js'
+import Network from './adapter/network.js'
 
 const PRINTER_ADAPTER = {
     USB: Usb,
     SERIAL: Serial,
-    NETWORK: Usb
+    NETWORK: Network
 }
 
 export default class Printer extends EventEmitter {
