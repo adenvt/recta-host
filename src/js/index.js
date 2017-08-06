@@ -1,6 +1,6 @@
-import { app, BrowserWindow, Tray, Menu } from 'electron'
-import installExtension, { VUEJS_DEVTOOLS } from 'electron-devtools-installer'
-import { enableLiveReload } from 'electron-compile'
+import {BrowserWindow, Menu, Tray, app} from 'electron'
+import installExtension, {VUEJS_DEVTOOLS} from 'electron-devtools-installer'
+import {enableLiveReload} from 'electron-compile'
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -14,8 +14,8 @@ if (isDevMode) enableLiveReload()
 const createWindow = async () => {
   // Create the browser window.
   mainWindow = new BrowserWindow({
-    width: 800,
-    height: 600
+    width : 800,
+    height: 600,
   })
 
   // Show tray icon
@@ -24,7 +24,7 @@ const createWindow = async () => {
     {label: 'Item1', type: 'radio'},
     {label: 'Item2', type: 'radio'},
     {label: 'Item3', type: 'radio', checked: true},
-    {label: 'Item4', type: 'radio'}
+    {label: 'Item4', type: 'radio'},
   ])
   tray.setToolTip('Recta Print')
   tray.setContextMenu(contextMenu)
@@ -56,17 +56,15 @@ app.on('ready', createWindow)
 app.on('window-all-closed', () => {
   // On OS X it is common for applications and their menu bar
   // to stay active until the user quits explicitly with Cmd + Q
-  if (process.platform !== 'darwin') {
+  if (process.platform !== 'darwin')
     app.quit()
-  }
 })
 
 app.on('activate', () => {
   // On OS X it's common to re-create a window in the app when the
   // dock icon is clicked and there are no other windows open.
-  if (mainWindow === null) {
+  if (mainWindow === null)
     createWindow()
-  }
 })
 
 // In this file you can include the rest of your app's specific main process

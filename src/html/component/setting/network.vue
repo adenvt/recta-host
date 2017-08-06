@@ -12,31 +12,31 @@
 </template>
 
 <script type="text/javascript">
-    import _ from 'lodash'
+import _ from 'lodash'
 
-    export default {
-        props: ['data'],
-        data() {
-            return {
-                config: {
-                    address: this.data.address,
-                    port: this.data.port,
-                }
-            }
-        },
-        created() {
-            _.assign(this.config, _.defaults(this.data, {
-                address: 'localhost',
-                port: 9100
-            }))
-        },
-        watch: {
-            config: {
-                deep: true,
-                handler() {
-                    this.$emit('change', this.config)
-                }
-            }
-        }
+export default {
+  props: ['data'],
+  data () {
+    return {
+      config: {
+        address: this.data.address,
+        port   : this.data.port,
+      },
     }
+  },
+  created () {
+    _.assign(this.config, _.defaults(this.data, {
+      address: 'localhost',
+      port   : 9100,
+    }))
+  },
+  watch: {
+    config: {
+      deep: true,
+      handler () {
+        this.$emit('change', this.config)
+      },
+    },
+  },
+}
 </script>

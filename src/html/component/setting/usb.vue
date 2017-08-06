@@ -12,23 +12,23 @@
 </template>
 
 <script type="text/javascript">
-    export default {
-        props: ['data'],
-        data() {
-            return {
-                config: {
-                    vid: this.data.vid || '',
-                    pid: this.data.pid || '',
-                }
-            }
-        },
-        watch: {
-            config: {
-                deep: true,
-                handler() {
-                    this.$emit('change', this.config)
-                }
-            }
-        }
+export default {
+  props: ['data'],
+  data () {
+    return {
+      config: {
+        vid: this.data.vid || '',
+        pid: this.data.pid || '',
+      },
     }
+  },
+  watch: {
+    config: {
+      deep: true,
+      handler () {
+        this.$emit('change', this.config)
+      },
+    },
+  },
+}
 </script>
