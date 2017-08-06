@@ -8,7 +8,8 @@
         "start": "electron-forge start",
         "package": "electron-forge package",
         "make": "electron-forge make",
-        "lint": "echo \"No linting configured\""
+        "lint": "eslint --ext .js,.vue,.html src/",
+        "fix": "eslint --fix --ext .js,.vue,.html src/"
     },
     "keywords": [],
     "author": "cyber",
@@ -59,6 +60,14 @@
         "babel-plugin-transform-async-to-generator": "^6.24.1",
         "babel-preset-env": "^1.6.0",
         "babel-preset-react": "^6.24.1",
-        "electron-prebuilt-compile": "1.6.11"
+        "electron-prebuilt-compile": "1.6.11",
+        "eslint": "^4.3.0",
+        "eslint-config-standard": "^10.2.1",
+        "eslint-plugin-html": "^3.1.1",
+        "eslint-plugin-import": "^2.7.0",
+        "eslint-plugin-node": "^5.1.1",
+        "eslint-plugin-promise": "^3.5.0",
+        "eslint-plugin-standard": "^3.0.1",
+        "eslint-plugin-vue": "beta"
     }
 }

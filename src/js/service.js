@@ -1,6 +1,6 @@
+import EventEmitter from 'events'
 import HTTP from 'http'
 import Socket from 'socket.io'
-import EventEmitter from 'events'
 import Printer from './printer.js'
 import { CFG } from './constant.js'
 
@@ -13,14 +13,13 @@ export default class Service extends EventEmitter {
     })
     this.http.setTimeout(1000)
 
-    this.io = Socket(this.http)
+    this.io = new Socket(this.http)
     this.io.use((socket, next) => {
       const token = socket.handshake.query.token
       const appkey = CFG.get('app.key')
 
-      if (token !== appkey) {
+      if (token !== appkey)
         return next(new Error('Not Authorized'))
-      }
 
       return next()
     })

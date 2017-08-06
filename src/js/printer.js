@@ -5,20 +5,19 @@ import Serial from './adapter/serial.js'
 import Network from './adapter/network.js'
 
 const PRINTER_ADAPTER = {
-  USB: Usb,
-  SERIAL: Serial,
-  NETWORK: Network
+  USB    : Usb,
+  SERIAL : Serial,
+  NETWORK: Network,
 }
 
 export default class Printer extends EventEmitter {
   constructor (adapter, options) {
     super()
 
-    if (adapter instanceof Adapter) {
+    if (adapter instanceof Adapter)
       this.adapter = adapter
-    } else {
+    else
       this.adapter = new PRINTER_ADAPTER[adapter.toUpperCase()](options)
-    }
 
     this.adapter.on('open', () => {
       this.emit('open')

@@ -2,18 +2,18 @@ import Config from 'electron-config'
 import { version } from '../../package.json'
 
 export const CFG = new Config({
-  name: 'recta',
+  name    : 'recta',
   defaults: {
     printer: {
       adapter: 'usb',
-      option: {}
+      option : {},
     },
     app: {
       startup: false,
-      port: 1811,
-      key: ''
-    }
-  }
+      port   : 1811,
+      key    : '',
+    },
+  },
 })
 
 export const PRINT_TEST =
