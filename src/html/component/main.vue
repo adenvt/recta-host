@@ -40,7 +40,7 @@
             </div>
             <div class="twelve columns">
                 <label>
-                    <input type="checkbox" v-model="app.startup" />
+                    <input type="checkbox" v-model="startup" />
                     <span class="label-body">Autostart on startup</span>
                 </label>
             </div>
@@ -64,8 +64,9 @@
 
 <script type="text/javascript">
 import _ from 'lodash'
+import { ipcRenderer } from 'electron'
 import Service from '../../js/service.js'
-import { CFG, PRINT_TEST } from '../../js/constant.js'
+import { CFG, PRINT_TEST, AUTOLUNCHER } from '../../js/constant.js'
 import Usb from './setting/usb.vue'
 import Serial from './setting/serial.vue'
 import Network from './setting/network.vue'
@@ -79,10 +80,10 @@ export default {
         option : {},
       },
       app: {
-        startup: false,
-        port   : 1811,
-        key    : _.random(1000000000, 9999999999).toString(),
+        port: 1811,
+        key : _.random(1000000000, 9999999999).toString(),
       },
+      startup: false,
       service: null,
       isStart: false,
       logs   : [],
@@ -90,17 +91,44 @@ export default {
   },
   created () {
     _.assign(this.$data, CFG.get())
+
+    ipcRenderer.on('start', () => {
+      this.start()
+    })
+    ipcRenderer.on('stop', () => {
+      this.stop()
+    })
   },
   mounted () {
-    if (this.app.startup)
-      this.start()
+    AUTOLUNCHER.isEnabled().then((isEnabled) => {
+      this.startup = isEnabled
+
+      if (isEnabled)
+        this.start()
+    })
+  },
+  watch: {
+    isStart (val) {
+      if (val)
+        ipcRenderer.send('started')
+      else
+        ipcRenderer.send('stoped')
+    },
   },
   methods: {
     save () {
-      CFG.set('printer', this.printer)
-      CFG.set('app', this.app)
+      const promise = this.startup
+        ? AUTOLUNCHER.enable()
+        : AUTOLUNCHER.disable()
 
-      this.log('Config Saved')
+      promise.then(() => {
+        CFG.set('printer', this.printer)
+        CFG.set('app', this.app)
+
+        this.log('Config Saved')
+      }).catch((e) => {
+        this.log(e)
+      })
     },
     toggle () {
       (!this.isStart)
