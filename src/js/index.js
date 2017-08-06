@@ -1,4 +1,4 @@
-import {BrowserWindow, Menu, Tray, app} from 'electron'
+import {BrowserWindow, Menu, Tray, app, ipcMain} from 'electron'
 import installExtension, {VUEJS_DEVTOOLS} from 'electron-devtools-installer'
 import {enableLiveReload} from 'electron-compile'
 
@@ -8,26 +8,92 @@ let mainWindow
 let tray
 
 const isDevMode = process.execPath.match(/[\\/]electron/)
+var isHidden = (process.argv || []).indexOf('--hidden') !== -1
 
 if (isDevMode) enableLiveReload()
+
+const isSecondInstance = app.makeSingleInstance((commandLine, workingDirectory) => {
+  // Someone tried to run a second instance, we should focus our window.
+  if (mainWindow) {
+    if (mainWindow.isMinimized())
+      mainWindow.restore()
+
+    mainWindow.focus()
+  }
+})
+
+if (isSecondInstance) {
+  app.isQuiting = true
+  app.quit()
+}
 
 const createWindow = async () => {
   // Create the browser window.
   mainWindow = new BrowserWindow({
-    width : 800,
+    width : 400,
     height: 600,
+    show  : !isHidden,
   })
 
-  // Show tray icon
-  tray = new Tray(`${__dirname}/../img/logo.circle.png`)
-  const contextMenu = Menu.buildFromTemplate([
-    {label: 'Item1', type: 'radio'},
-    {label: 'Item2', type: 'radio'},
-    {label: 'Item3', type: 'radio', checked: true},
-    {label: 'Item4', type: 'radio'},
+  const mainMenu = Menu.buildFromTemplate([
+    {
+      label  : 'File',
+      submenu: [
+        {
+          label: 'Minimize to Tray',
+          click () {
+            mainWindow.hide()
+          },
+        },
+        { type: 'separator' },
+        {
+          label: 'Quit',
+          click () {
+            app.isQuiting = true
+            app.quit()
+          },
+        },
+      ],
+    },
   ])
+
+  Menu.setApplicationMenu(mainMenu)
+
+  // Show tray icon
+  const trayMenu = Menu.buildFromTemplate([
+    {
+      label: 'Show',
+      click () {
+        mainWindow.show()
+      },
+    },
+    { type: 'separator' },
+    {
+      label: 'Start',
+      click () {
+        mainWindow.webContents.send('start')
+      },
+    },
+    {
+      label  : 'Stop',
+      enabled: false,
+      click () {
+        mainWindow.webContents.send('stop')
+      },
+    },
+    { type: 'separator' },
+    {
+      label: 'Quit',
+      click () {
+        app.isQuiting = true
+        app.quit()
+      },
+    },
+  ])
+
+  tray = new Tray(`${__dirname}/../img/logo.circle.png`)
   tray.setToolTip('Recta Print')
-  tray.setContextMenu(contextMenu)
+  tray.setContextMenu(trayMenu)
 
   // and load the index.html of the app.
   mainWindow.loadURL(`file://${__dirname}/../html/index.html`)
@@ -38,12 +104,42 @@ const createWindow = async () => {
     mainWindow.webContents.openDevTools()
   }
 
+  // Emitted when minimize clicked
+  mainWindow.on('minimize', (e) => {
+    e.preventDefault()
+
+    mainWindow.hide()
+  })
+
+  // Emitted when close clicked
+  mainWindow.on('close', (e) => {
+    if (!app.isQuiting) {
+      e.preventDefault()
+
+      mainWindow.hide()
+    }
+  })
+
   // Emitted when the window is closed.
   mainWindow.on('closed', () => {
     // Dereference the window object, usually you would store windows
     // in an array if your app supports multi windows, this is the time
     // when you should delete the corresponding element.
     mainWindow = null
+  })
+
+  ipcMain.on('started', () => {
+    trayMenu.items[2].enabled = false
+    trayMenu.items[3].enabled = true
+
+    tray.setContextMenu(trayMenu)
+  })
+
+  ipcMain.on('stoped', () => {
+    trayMenu.items[2].enabled = true
+    trayMenu.items[3].enabled = false
+
+    tray.setContextMenu(trayMenu)
   })
 }
 

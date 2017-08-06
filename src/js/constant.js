@@ -1,3 +1,4 @@
+import AutoLaunch from 'auto-launch'
 import Config from 'electron-config'
 import { version } from '../../package.json'
 
@@ -9,11 +10,15 @@ export const CFG = new Config({
       option : {},
     },
     app: {
-      startup: false,
-      port   : 1811,
-      key    : '',
+      port: 1811,
+      key : '',
     },
   },
+})
+
+export const AUTOLUNCHER = new AutoLaunch({
+  name    : 'Recta',
+  isHidden: true,
 })
 
 export const PRINT_TEST =

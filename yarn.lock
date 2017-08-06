@@ -145,6 +145,10 @@ ansi-styles@^3.1.0:
   dependencies:
     color-convert "^1.9.0"
 
+applescript@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/applescript/-/applescript-1.0.0.tgz#bb87af568cad034a4e48c4bdaf6067a3a2701317"
+
 aproba@^1.0.3:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/aproba/-/aproba-1.1.2.tgz#45c6629094de4e96f693ef7eab74ae079c240fc1"
@@ -211,6 +215,16 @@ async@1.x, async@^1.4.0:
 asynckit@^0.4.0:
   version "0.4.0"
   resolved "https://registry.yarnpkg.com/asynckit/-/asynckit-0.4.0.tgz#c79ed97f7f34cb8f2ba1bc9790bcc366474b4b79"
+
+auto-launch@^5.0.1:
+  version "5.0.1"
+  resolved "https://registry.yarnpkg.com/auto-launch/-/auto-launch-5.0.1.tgz#2015a8a30384abe0e7f98cbdca8145cf154753ae"
+  dependencies:
+    applescript "^1.0.0"
+    mkdirp "^0.5.1"
+    path-is-absolute "^1.0.0"
+    untildify "^3.0.2"
+    winreg "1.2.2"
 
 autoprefixer@^6.3.1:
   version "6.7.7"
@@ -4083,6 +4097,10 @@ uniqs@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/uniqs/-/uniqs-2.0.0.tgz#ffede4b36b25290696e6e165d4a59edb998e6b02"
 
+untildify@^3.0.2:
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/untildify/-/untildify-3.0.2.tgz#7f1f302055b3fea0f3e81dc78eb36766cb65e3f1"
+
 usb@^1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/usb/-/usb-1.2.0.tgz#ab72d9786a047068919a024d08c7a1c5b1e60f47"
@@ -4217,6 +4235,10 @@ window-size@0.1.0:
 window-size@^0.2.0:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/window-size/-/window-size-0.2.0.tgz#b4315bb4214a3d7058ebeee892e13fa24d98b075"
+
+winreg@1.2.2:
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/winreg/-/winreg-1.2.2.tgz#8509afa3b71c5bbd110a6d7c6247ec67736c598f"
 
 with@~4.0.0:
   version "4.0.3"
