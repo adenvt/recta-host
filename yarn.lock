@@ -1599,7 +1599,7 @@ engine.io-parser@~2.1.0, engine.io-parser@~2.1.1:
     blob "0.0.4"
     has-binary2 "~1.0.2"
 
-engine.io@^3.1.0, engine.io@~3.1.0:
+engine.io@~3.1.0:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/engine.io/-/engine.io-3.1.0.tgz#5ca438e3ce9fdbc915c4a21c8dd9e1266706e57e"
   dependencies:

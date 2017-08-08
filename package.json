@@ -1,74 +1,77 @@
 {
-    "name": "recta-peer",
-    "productName": "recta-peer",
-    "version": "1.0.0",
-    "description": "My Electron application description",
-    "main": "src/js/index.js",
-    "scripts": {
-        "start": "electron-forge start",
-        "package": "electron-forge package",
-        "make": "electron-forge make",
-        "lint": "eslint --ext .js,.vue,.html src/",
-        "fix": "eslint --fix --ext .js,.vue,.html src/"
-    },
-    "keywords": [],
-    "author": "cyber",
-    "license": "MIT",
-    "config": {
-        "forge": {
-            "make_targets": {
-                "win32": [
-                    "squirrel"
-                ],
-                "darwin": [
-                    "zip"
-                ],
-                "linux": [
-                    "deb",
-                    "rpm"
-                ]
-            },
-            "electronPackagerConfig": {},
-            "electronWinstallerConfig": {
-                "name": "recta_peer"
-            },
-            "electronInstallerDebian": {},
-            "electronInstallerRedhat": {},
-            "github_repository": {
-                "owner": "",
-                "name": ""
-            },
-            "windowsStoreConfig": {
-                "packageName": "",
-                "name": "rectapeer"
-            }
-        }
-    },
-    "dependencies": {
-        "auto-launch": "^5.0.1",
-        "electron-compile": "^6.4.1",
-        "electron-config": "^1.0.0",
-        "electron-devtools-installer": "^2.0.1",
-        "engine.io": "^3.1.0",
-        "lodash": "^4.17.4",
-        "serialport": "^5.0.0-beta8",
-        "socket.io": "^2.0.3",
-        "usb": "^1.2.0",
-        "vue": "^2.1.7",
-        "vueify": "^9.4.1"
-    },
-    "devDependencies": {
-        "babel-plugin-transform-async-to-generator": "^6.24.1",
-        "babel-preset-env": "^1.6.0",
-        "babel-preset-react": "^6.24.1",
-        "electron-prebuilt-compile": "1.6.11",
-        "eslint": "^4.3.0",
-        "eslint-config-standard": "^10.2.1",
-        "eslint-plugin-html": "^3.1.1",
-        "eslint-plugin-import": "^2.7.0",
-        "eslint-plugin-node": "^5.1.1",
-        "eslint-plugin-promise": "^3.5.0",
-        "eslint-plugin-standard": "^3.0.1",
-        "eslint-plugin-vue": "beta"
+  "name": "recta-peer",
+  "productName": "recta-peer",
+  "version": "0.1.0",
+  "description": "Direct printing from JS",
+  "main": "src/js/index.js",
+  "scripts": {
+    "start": "electron-forge start",
+    "package": "electron-forge package",
+    "make": "electron-forge make",
+    "lint": "eslint --ext .js,.vue,.html src/",
+    "fix": "eslint --fix --ext .js,.vue,.html src/"
+  },
+  "keywords": ["printer"],
+  "author": {
+    "name": "Ade Novid",
+    "email": "adenvt@gmail.com",
+    "url": "http://adenovid.net"
+  },
+  "license": "MIT",
+  "config": {
+    "forge": {
+      "make_targets": {
+        "win32": [
+          "squirrel"
+        ],
+        "darwin": [
+          "zip"
+        ],
+        "linux": [
+          "deb",
+          "rpm"
+        ]
+      },
+      "electronPackagerConfig": {},
+      "electronWinstallerConfig": {
+        "name": "recta_peer"
+      },
+      "electronInstallerDebian": {},
+      "electronInstallerRedhat": {},
+      "github_repository": {
+        "owner": "",
+        "name": ""
+      },
+      "windowsStoreConfig": {
+        "packageName": "",
+        "name": "rectapeer"
+      }
     }
+  },
+  "dependencies": {
+    "auto-launch": "^5.0.1",
+    "electron-compile": "^6.4.1",
+    "electron-config": "^1.0.0",
+    "electron-devtools-installer": "^2.0.1",
+    "lodash": "^4.17.4",
+    "serialport": "^5.0.0-beta8",
+    "socket.io": "^2.0.3",
+    "usb": "^1.2.0",
+    "vue": "^2.1.7",
+    "vueify": "^9.4.1"
+  },
+  "devDependencies": {
+    "babel-plugin-transform-async-to-generator": "^6.24.1",
+    "babel-preset-env": "^1.6.0",
+    "babel-preset-react": "^6.24.1",
+    "electron-prebuilt-compile": "1.6.11",
+    "eslint": "^4.3.0",
+    "eslint-config-standard": "^10.2.1",
+    "eslint-plugin-html": "^3.1.1",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-node": "^5.1.1",
+    "eslint-plugin-promise": "^3.5.0",
+    "eslint-plugin-standard": "^3.0.1",
+    "eslint-plugin-vue": "beta"
+  }
 }
