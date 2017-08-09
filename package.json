@@ -1,6 +1,6 @@
 {
-  "name": "recta-peer",
-  "productName": "recta-peer",
+  "name": "recta-host",
+  "productName": "recta-host",
   "version": "0.1.0",
   "description": "Direct printing from JS",
   "main": "src/js/index.js",
@@ -34,7 +34,7 @@
       },
       "electronPackagerConfig": {},
       "electronWinstallerConfig": {
-        "name": "recta_peer"
+        "name": "recta_host"
       },
       "electronInstallerDebian": {},
       "electronInstallerRedhat": {},
@@ -44,7 +44,7 @@
       },
       "windowsStoreConfig": {
         "packageName": "",
-        "name": "rectapeer"
+        "name": "rectahost"
       }
     }
   },
