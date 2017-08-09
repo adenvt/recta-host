@@ -81,7 +81,7 @@ export default {
       },
       app: {
         port: 1811,
-        key : _.random(1000000000, 9999999999).toString(),
+        key : '',
       },
       startup: false,
       service: null,
@@ -90,7 +90,11 @@ export default {
     }
   },
   created () {
-    _.assign(this.$data, CFG.get())
+    _.assign(this.$data, _.defaultsDeep(CFG.get(), {
+      app: {
+        key: _.random(1000000000, 9999999999).toString(),
+      },
+    }))
 
     ipcRenderer.on('start', () => {
       this.start()
