@@ -1,6 +1,7 @@
 import {BrowserWindow, Menu, Tray, app, ipcMain} from 'electron'
 import installExtension, {VUEJS_DEVTOOLS} from 'electron-devtools-installer'
 import {enableLiveReload} from 'electron-compile'
+import ELECTRON_SQUIRREL_STARTUP from 'electron-squirrel-startup'
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -23,6 +24,11 @@ const isSecondInstance = app.makeSingleInstance((commandLine, workingDirectory) 
 })
 
 if (isSecondInstance) {
+  app.isQuiting = true
+  app.quit()
+}
+
+if (ELECTRON_SQUIRREL_STARTUP) {
   app.isQuiting = true
   app.quit()
 }
