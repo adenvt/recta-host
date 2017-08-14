@@ -34,7 +34,15 @@
           "rpm"
         ]
       },
-      "electronPackagerConfig": {},
+      "electronPackagerConfig": {
+        "asar": true,
+        "ignore": [
+          "^/\\.",
+          "^/[\\w\\.]+\\.log$",
+          "^/yarn",
+          "^/node_modules/uws"
+        ]
+      },
       "electronWinstallerConfig": {
         "name": "recta_host"
       },
