@@ -1,3 +1,5 @@
+import path from 'path'
+import url from 'url'
 import {BrowserWindow, Menu, Tray, app, ipcMain} from 'electron'
 import installExtension, {VUEJS_DEVTOOLS} from 'electron-devtools-installer'
 import {enableLiveReload} from 'electron-compile'
@@ -97,12 +99,16 @@ const createWindow = async () => {
     },
   ])
 
-  tray = new Tray(`${__dirname}/../img/logo.circle.png`)
+  tray = new Tray(path.join(__dirname, '../img/logo.circle.png'))
   tray.setToolTip('Recta Print')
   tray.setContextMenu(trayMenu)
 
   // and load the index.html of the app.
-  mainWindow.loadURL(`file://${__dirname}/../html/index.html`)
+  mainWindow.loadURL(url.format({
+    protocol: 'file',
+    slashes : true,
+    pathname: path.join(__dirname, '../html/index.html'),
+  }))
 
   // Open the DevTools.
   if (isDevMode) {
