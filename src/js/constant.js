@@ -1,3 +1,4 @@
+import _ from 'lodash'
 import AutoLaunch from 'auto-launch'
 import Config from 'electron-config'
 import { version } from '../../package.json'
@@ -11,7 +12,7 @@ export const CFG = new Config({
     },
     app: {
       port: 1811,
-      key : '',
+      key : _.random(1000000000, 9999999999).toString(),
     },
   },
 })

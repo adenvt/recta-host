@@ -90,11 +90,7 @@ export default {
     }
   },
   created () {
-    _.assign(this.$data, _.defaultsDeep(CFG.get(), {
-      app: {
-        key: _.random(1000000000, 9999999999).toString(),
-      },
-    }))
+    _.assign(this.$data, CFG.get())
 
     ipcRenderer.on('start', () => {
       this.start()
