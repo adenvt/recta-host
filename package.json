@@ -6,6 +6,7 @@
   "main": "src/js/index.js",
   "scripts": {
     "start": "electron-forge start",
+    "test": "npm run lint",
     "package": "electron-forge package",
     "make": "electron-forge make",
     "lint": "eslint --ext .js,.vue,.html src/",
