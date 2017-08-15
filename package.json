@@ -44,7 +44,11 @@
         ]
       },
       "electronWinstallerConfig": {
-        "name": "recta_host"
+        "name": "recta_host",
+        "iconUrl": "src/img/icons/win/icon.ico",
+        "setupIcon": "src/img/icons/win/icon.ico",
+        "setupExe": "recta_host_setup",
+        "loadingGif": "src/img/animation/loading.gif"
       },
       "electronInstallerDebian": {},
       "electronInstallerRedhat": {},
