@@ -41,7 +41,7 @@ const createWindow = async () => {
     width : 400,
     height: 600,
     show  : !isHidden,
-    icon  : path.join(__dirname, '../img/icons/png/256x256.png'),
+    icon  : path.join(__dirname, '../img/icons/png/32x32.png'),
   })
 
   const mainMenu = Menu.buildFromTemplate([
@@ -100,7 +100,7 @@ const createWindow = async () => {
     },
   ])
 
-  tray = new Tray(path.join(__dirname, '../img/icons/png/64x64.png'))
+  tray = new Tray(path.join(__dirname, '../img/icons/win/icon.ico'))
   tray.setToolTip('Recta Print')
   tray.setContextMenu(trayMenu)
 

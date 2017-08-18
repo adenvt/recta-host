@@ -41,13 +41,22 @@
           "^/[\\w\\.]+\\.log$",
           "^/yarn",
           "^/node_modules/uws"
-        ]
+        ],
+        "appCopyright": "Copyright (C) 2017 Ade Novid.",
+        "icon": "src/img/icons/win/icon.ico",
+        "win32metadata": {
+        	"CompanyName": "Recta",
+        	"FileDescription": "Recta Host",
+        	"InternalName": "Recta Host",
+        	"ProductName" : "Recta Host",
+        	"OriginalFilename": "recta-host.exe"
+        }
       },
       "electronWinstallerConfig": {
         "name": "recta_host",
-        "iconUrl": "src/img/icons/win/icon.ico",
+        "iconUrl": "https://raw.githubusercontent.com/adenvt/recta-host/feature/buildonwindows/src/img/icons/win/icon.ico",
         "setupIcon": "src/img/icons/win/icon.ico",
-        "setupExe": "recta_host_setup",
+        "setupExe": "recta_host_setup.exe",
         "loadingGif": "src/img/animation/loading.gif"
       },
       "electronInstallerDebian": {},
