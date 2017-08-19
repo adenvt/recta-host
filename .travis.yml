@@ -14,6 +14,8 @@ addons:
       - dpkg
       - fakeroot
       - libudev-dev
+      - libudev-dev:i386
+      - gcc-multilib
 node_js:
   - lts/*
 install:
@@ -21,4 +23,4 @@ install:
   - npm install
 script:
   - npm run test
-  - npm run make
+  - electron-forge make -a ia32,x64
