@@ -1,0 +1,22 @@
+os:
+  - linux
+dist: trusty
+sudo: false
+language: node_js
+cache:
+  directories:
+    - $HOME/.npm
+    - node_modules
+addons:
+  apt:
+    packages:
+      - rpm
+      - libudev-dev
+node_js:
+  - lts/*
+install:
+  - npm install -g electron-forge
+  - npm install
+script:
+  - npm run test
+  - npm run make
