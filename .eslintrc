@@ -1,5 +1,10 @@
 {
-  "extends": ["standard", "plugin:vue/recommended"],
+  "extends": [
+    "standard",
+    "plugin:vue/recommended",
+    "plugin:import/errors",
+    "plugin:import/warnings"
+  ],
   "env": {
     "node": true
   },
@@ -19,13 +24,14 @@
     "import/order": ["error", { "newlines-between": "never" }],
     "import/no-extraneous-dependencies": "off",
     "import/no-unresolved": ["error", { "ignore": ["electron"] }],
-    "linebreak-style": "off",
+    "linebreak-style": ["error", "unix"],
     "key-spacing": ["error", {
-        "align": {
-          "beforeColon": false,
-          "afterColon": true,
-          "on": "colon"
-        },
-    }]
+      "align": {
+        "beforeColon": false,
+        "afterColon": true,
+        "on": "colon"
+      },
+    }],
+    "object-curly-spacing": ["error", "always"]
   }
 }

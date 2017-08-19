@@ -66,7 +66,7 @@
 import _ from 'lodash'
 import { ipcRenderer } from 'electron'
 import Service from '../../js/service.js'
-import { CFG, PRINT_TEST, AUTOLUNCHER } from '../../js/constant.js'
+import { AUTOLUNCHER, CFG, PRINT_TEST } from '../../js/constant.js'
 import Usb from './setting/usb.vue'
 import Serial from './setting/serial.vue'
 import Network from './setting/network.vue'

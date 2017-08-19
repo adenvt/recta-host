@@ -1,10 +1,10 @@
 import path from 'path'
 import url from 'url'
-import {BrowserWindow, Menu, Tray, app, ipcMain} from 'electron'
-import installExtension, {VUEJS_DEVTOOLS} from 'electron-devtools-installer'
-import {enableLiveReload} from 'electron-compile'
+import { BrowserWindow, Menu, Tray, app, ipcMain } from 'electron'
+import installExtension, { VUEJS_DEVTOOLS } from 'electron-devtools-installer'
+import { enableLiveReload } from 'electron-compile'
 import ELECTRON_SQUIRREL_STARTUP from 'electron-squirrel-startup'
-import {ICON} from './constant.js'
+import { ICON } from './constant.js'
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
