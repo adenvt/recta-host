@@ -57,6 +57,6 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 [win]: http://recta.adenovid.net/1.0.0/bin/win/recta_1.0.1.exe
 [deb]: http://recta.adenovid.net/1.0.0/bin/win/recta_1.0.1.deb
 [rpm]: http://recta.adenovid.net/1.0.0/bin/win/recta_1.0.1.rpm
-[zadig]: http://sourceforge.net/projects/libwdi/files/zadig/
+[zadig]: http://zadig.akeo.ie/
 [win-build-tool]: https://github.com/felixrieseberg/windows-build-tools
 [node-gyp#2]: https://github.com/nodejs/node-gyp#option-2
