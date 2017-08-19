@@ -32,6 +32,7 @@
         "on": "colon"
       },
     }],
-    "object-curly-spacing": ["error", "always"]
+    "object-curly-spacing": ["error", "always"],
+    "no-var": "error"
   }
 }

@@ -12,7 +12,7 @@ let mainWindow
 let tray
 
 const isDevMode = process.execPath.match(/[\\/]electron/)
-var isHidden = (process.argv || []).indexOf('--hidden') !== -1
+const isHidden = (process.argv || []).indexOf('--hidden') !== -1
 
 if (isDevMode) enableLiveReload()
 
