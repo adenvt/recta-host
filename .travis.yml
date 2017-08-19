@@ -3,6 +3,12 @@ os:
 dist: trusty
 sudo: false
 language: node_js
+matrix:
+  include:
+  - env: BUILD_ARCH=ia32
+    env: APT_ARCH=:i386
+  - env: BUILD_ARCH=x64
+    env: APT_ARCH=
 cache:
   directories:
     - $HOME/.npm
@@ -13,8 +19,7 @@ addons:
       - rpm
       - dpkg
       - fakeroot
-      - libudev-dev
-      - libudev-dev:i386
+      - libudev-dev$APT_ARCH
       - gcc-multilib
 node_js:
   - lts/*
@@ -23,4 +28,4 @@ install:
   - npm install
 script:
   - npm run test
-  - electron-forge make -a ia32,x64
+  - electron-forge make -a $BUILD_ARCH
