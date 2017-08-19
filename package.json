@@ -12,7 +12,9 @@
     "lint": "eslint --ext .js,.vue,.html src/",
     "fix": "eslint --fix --ext .js,.vue,.html src/"
   },
-  "keywords": ["printer"],
+  "keywords": [
+    "printer"
+  ],
   "author": {
     "name": "Ade Novid",
     "email": "adenvt@gmail.com",
@@ -33,15 +35,50 @@
           "rpm"
         ]
       },
-      "electronPackagerConfig": {},
-      "electronWinstallerConfig": {
-        "name": "recta_host"
+      "electronPackagerConfig": {
+        "asar": true,
+        "ignore": [
+          "^/\\.",
+          "^/[\\w\\.]+\\.log$",
+          "^/yarn",
+          "^/node_modules/uws"
+        ],
+        "appCopyright": "Copyright (C) 2017 Ade Novid.",
+        "icon": "src/img/icons/win/icon.ico",
+        "win32metadata": {
+          "CompanyName": "Recta",
+          "FileDescription": "Recta Host",
+          "InternalName": "Recta Host",
+          "ProductName" : "Recta Host",
+          "OriginalFilename": "recta-host.exe"
+        }
       },
-      "electronInstallerDebian": {},
-      "electronInstallerRedhat": {},
+      "electronWinstallerConfig": {
+        "name": "recta_host",
+        "iconUrl": "https://raw.githubusercontent.com/adenvt/recta-host/feature/buildonwindows/src/img/icons/win/icon.ico",
+        "setupIcon": "src/img/icons/win/icon.ico",
+        "setupExe": "recta_host_setup.exe",
+        "loadingGif": "src/img/animation/loading.gif"
+      },
+      "electronInstallerDebian": {
+        "icon": {
+          "48x48": "src/img/icons/png/48x48.png",
+          "64x64": "src/img/icons/png/64x64.png",
+          "128x128": "src/img/icons/png/128x128.png",
+          "256x256": "src/img/icons/png/256x256.png"
+        }
+      },
+      "electronInstallerRedhat": {
+        "icon": {
+          "48x48": "src/img/icons/png/48x48.png",
+          "64x64": "src/img/icons/png/64x64.png",
+          "128x128": "src/img/icons/png/128x128.png",
+          "256x256": "src/img/icons/png/256x256.png"
+        }
+      },
       "github_repository": {
-        "owner": "",
-        "name": ""
+        "owner": "adenvt",
+        "name": "recta-host"
       },
       "windowsStoreConfig": {
         "packageName": "",
@@ -54,10 +91,11 @@
     "electron-compile": "^6.4.1",
     "electron-config": "^1.0.0",
     "electron-devtools-installer": "^2.0.1",
+    "electron-squirrel-startup": "^1.0.0",
     "lodash": "^4.17.4",
     "serialport": "^5.0.0-beta8",
     "socket.io": "^2.0.3",
-    "usb": "^1.2.0",
+    "usb": "git+https://github.com/tessel/node-usb.git#1.3.0",
     "vue": "^2.1.7",
     "vueify": "^9.4.1"
   },

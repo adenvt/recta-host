@@ -1,6 +1,10 @@
+import path from 'path'
+import url from 'url'
 import {BrowserWindow, Menu, Tray, app, ipcMain} from 'electron'
 import installExtension, {VUEJS_DEVTOOLS} from 'electron-devtools-installer'
 import {enableLiveReload} from 'electron-compile'
+import ELECTRON_SQUIRREL_STARTUP from 'electron-squirrel-startup'
+import {ICON} from './constant.js'
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -27,12 +31,18 @@ if (isSecondInstance) {
   app.quit()
 }
 
+if (ELECTRON_SQUIRREL_STARTUP) {
+  app.isQuiting = true
+  app.quit()
+}
+
 const createWindow = async () => {
   // Create the browser window.
   mainWindow = new BrowserWindow({
     width : 400,
     height: 600,
     show  : !isHidden,
+    icon  : path.join(__dirname, '../img/icons/png/32x32.png'),
   })
 
   const mainMenu = Menu.buildFromTemplate([
@@ -91,12 +101,16 @@ const createWindow = async () => {
     },
   ])
 
-  tray = new Tray(`${__dirname}/../img/logo.circle.png`)
+  tray = new Tray(path.join(__dirname, ICON))
   tray.setToolTip('Recta Print')
   tray.setContextMenu(trayMenu)
 
   // and load the index.html of the app.
-  mainWindow.loadURL(`file://${__dirname}/../html/index.html`)
+  mainWindow.loadURL(url.format({
+    protocol: 'file',
+    slashes : true,
+    pathname: path.join(__dirname, '../html/index.html'),
+  }))
 
   // Open the DevTools.
   if (isDevMode) {
