@@ -1,34 +1,21 @@
 os:
   - linux
 dist: trusty
-sudo: false
+sudo: required
 language: node_js
-matrix:
-  include:
-  - env:
-      - BUILD_ARCH=x64
-      - APT_ARCH=""
-  - env:
-      - BUILD_ARCH=ia32
-      - APT_ARCH=:i386
+node_js:
+  - lts/*
 cache:
   directories:
     - $HOME/.npm
     - node_modules
-addons:
-  apt:
-    packages:
-      - rpm
-      - dpkg
-      - fakeroot
-      - libudev-dev$APT_ARCH
-      - gcc-multilib
-      - g++-multilib
-node_js:
-  - lts/*
+before_install:
+  - sudo dpkg --add-architecture i386
+  - sudo apt-get -qq update
+  - sudo apt install -y rpm dpkg fakeroot libudev-dev libudev-dev:i386 gcc-multilib g++-multilib
 install:
   - npm install -g electron-forge
   - npm install
 script:
   - npm run test
-  - electron-forge make -a $BUILD_ARCH
+  - electron-forge make -a ia32,x64
