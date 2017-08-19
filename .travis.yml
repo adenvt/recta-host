@@ -23,6 +23,7 @@ addons:
       - fakeroot
       - libudev-dev$APT_ARCH
       - gcc-multilib
+      - g++-multilib
 node_js:
   - lts/*
 install:
