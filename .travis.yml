@@ -3,22 +3,37 @@ os:
 dist: trusty
 sudo: false
 language: node_js
+node_js:
+  - lts/*
+matrix:
+  include:
+  - env: BUILD_ARCH=x64
+    addons:
+      apt:
+        packages:
+          - rpm
+          - dpkg
+          - fakeroot
+          - libudev-dev
+  - env: BUILD_ARCH=ia32
+    addons:
+      apt:
+        packages:
+          - rpm
+          - dpkg
+          - fakeroot
+          - libudev-dev:i386
+          - gcc-multilib
+          - g++-multilib
 cache:
   directories:
     - $HOME/.npm
     - node_modules
-addons:
-  apt:
-    packages:
-      - rpm
-      - dpkg
-      - fakeroot
-      - libudev-dev
-node_js:
-  - lts/*
 install:
   - npm install -g electron-forge
-  - npm install
+  - npm install --ignore-scripts
 script:
   - npm run test
-  - npm run make
+  - electron-forge make -a $BUILD_ARCH
+notifications:
+  email: false
