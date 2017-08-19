@@ -31,7 +31,7 @@ cache:
     - node_modules
 install:
   - npm install -g electron-forge
-  - npm install
+  - npm install --ignore-scripts
 script:
   - npm run test
   - electron-forge make -a $BUILD_ARCH
