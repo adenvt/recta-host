@@ -11,6 +11,8 @@ addons:
   apt:
     packages:
       - rpm
+      - dpkg
+      - fakeroot
       - libudev-dev
 node_js:
   - lts/*
