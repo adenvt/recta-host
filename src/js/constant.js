@@ -21,6 +21,15 @@ export const AUTOLUNCHER = new AutoLaunch({
   isHidden: true,
 })
 
+export const ICON = (() => {
+  const icons = {
+    linux: '../img/icons/png/64x64.png',
+    win32: '../img/icons/win/icon.ico',
+  }
+
+  return icons[process.platform]
+})()
+
 export const PRINT_TEST =
 `\x1b\x40\x1b\x61\x01
 ***   PRINTER TEST  ***

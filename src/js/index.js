@@ -4,6 +4,7 @@ import {BrowserWindow, Menu, Tray, app, ipcMain} from 'electron'
 import installExtension, {VUEJS_DEVTOOLS} from 'electron-devtools-installer'
 import {enableLiveReload} from 'electron-compile'
 import ELECTRON_SQUIRREL_STARTUP from 'electron-squirrel-startup'
+import {ICON} from './constant.js'
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -100,7 +101,7 @@ const createWindow = async () => {
     },
   ])
 
-  tray = new Tray(path.join(__dirname, '../img/icons/win/icon.ico'))
+  tray = new Tray(path.join(__dirname, ICON))
   tray.setToolTip('Recta Print')
   tray.setContextMenu(trayMenu)
 

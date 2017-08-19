@@ -45,11 +45,11 @@
         "appCopyright": "Copyright (C) 2017 Ade Novid.",
         "icon": "src/img/icons/win/icon.ico",
         "win32metadata": {
-        	"CompanyName": "Recta",
-        	"FileDescription": "Recta Host",
-        	"InternalName": "Recta Host",
-        	"ProductName" : "Recta Host",
-        	"OriginalFilename": "recta-host.exe"
+          "CompanyName": "Recta",
+          "FileDescription": "Recta Host",
+          "InternalName": "Recta Host",
+          "ProductName" : "Recta Host",
+          "OriginalFilename": "recta-host.exe"
         }
       },
       "electronWinstallerConfig": {
@@ -59,11 +59,25 @@
         "setupExe": "recta_host_setup.exe",
         "loadingGif": "src/img/animation/loading.gif"
       },
-      "electronInstallerDebian": {},
-      "electronInstallerRedhat": {},
+      "electronInstallerDebian": {
+        "icon": {
+          "48x48": "src/img/icons/png/48x48.png",
+          "64x64": "src/img/icons/png/64x64.png",
+          "128x128": "src/img/icons/png/128x128.png",
+          "256x256": "src/img/icons/png/256x256.png"
+        }
+      },
+      "electronInstallerRedhat": {
+        "icon": {
+          "48x48": "src/img/icons/png/48x48.png",
+          "64x64": "src/img/icons/png/64x64.png",
+          "128x128": "src/img/icons/png/128x128.png",
+          "256x256": "src/img/icons/png/256x256.png"
+        }
+      },
       "github_repository": {
-        "owner": "",
-        "name": ""
+        "owner": "adenvt",
+        "name": "recta-host"
       },
       "windowsStoreConfig": {
         "packageName": "",
