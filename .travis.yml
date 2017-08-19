@@ -5,12 +5,12 @@ sudo: false
 language: node_js
 matrix:
   include:
-  - node_js: lts/*
-    env: BUILD_ARCH=ia32
-    env: APT_ARCH=:i386
-  - node_js: lts/*
-    env: BUILD_ARCH=x64
-    env: APT_ARCH=
+  - env:
+      - BUILD_ARCH=x64
+      - APT_ARCH=""
+  - env:
+      - BUILD_ARCH=ia32
+      - APT_ARCH=:i386
 cache:
   directories:
     - $HOME/.npm
