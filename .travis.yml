@@ -32,7 +32,7 @@ matrix:
           - rpm
           - dpkg
           - fakeroot
-          - ia32-libs
+          - multiarch-support
           - libudev-dev:i386
           - libxss1:i386
           - libgtk2.0-0:i386
@@ -44,6 +44,9 @@ matrix:
           - libusb-1.0-0:i386
           - gcc-multilib
           - g++-multilib
+  allow_failures:
+    - env: BUILD_ARCH=ia32
+  fast_finish: true
 cache:
   directories:
     - $HOME/.npm
