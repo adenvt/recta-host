@@ -15,6 +15,10 @@ matrix:
           - dpkg
           - fakeroot
           - libudev-dev
+          - libxss1
+          - libgtk2.0-0
+          - libgconf-2-4
+          - libnss3
   - env: BUILD_ARCH=ia32
     addons:
       apt:
@@ -23,6 +27,10 @@ matrix:
           - dpkg
           - fakeroot
           - libudev-dev:i386
+          - libxss1:i386
+          - libgtk2.0-0:i386
+          - libgconf-2-4:i386
+          - libnss3:i386
           - gcc-multilib
           - g++-multilib
 cache:
@@ -32,8 +40,13 @@ cache:
 install:
   - npm install -g electron-forge
   - npm install --ignore-scripts
+before_script:
+  - "export DISPLAY=:99.0"
+  - "sh -e /etc/init.d/xvfb start"
+  - sleep 3
 script:
+  - npm run lint
+  - electron-forge package -a $BUILD_ARCH
   - npm run test
-  - electron-forge make -a $BUILD_ARCH
 notifications:
   email: false

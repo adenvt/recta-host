@@ -6,11 +6,12 @@
   "main": "src/js/index.js",
   "scripts": {
     "start": "electron-forge start",
-    "test": "npm run lint",
+    "test": "NODE_ENV=test mocha",
     "package": "electron-forge package",
     "make": "electron-forge make",
-    "lint": "eslint --ext .js,.vue,.html src/",
-    "fix": "eslint --fix --ext .js,.vue,.html src/"
+    "lint": "eslint --ext .js,.vue,.html src/ test/",
+    "fix": "eslint --fix --ext .js,.vue,.html src/ test/",
+    "ci": "npm run lint && electron-forge package -a $BUILD_ARCH && npm run test"
   },
   "keywords": [
     "printer"
@@ -111,6 +112,8 @@
     "eslint-plugin-node": "^5.1.1",
     "eslint-plugin-promise": "^3.5.0",
     "eslint-plugin-standard": "^3.0.1",
-    "eslint-plugin-vue": "beta"
+    "eslint-plugin-vue": "beta",
+    "mocha": "^3.5.0",
+    "spectron": "^3.7.2"
   }
 }

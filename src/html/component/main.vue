@@ -19,6 +19,7 @@
     <form action="" id="settings">
         <div class="row">
             <div class="twelve columns">
+                <h1 id="app-name">Recta Host</h1>
                 <label>Printer Adapter</label>
                 <select class="u-full-width" v-model="printer.adapter">
                     <option value="usb">USB</option>

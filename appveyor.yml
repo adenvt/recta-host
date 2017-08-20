@@ -1,3 +1,4 @@
+os: unstable
 version: 0.1.0+{build}
 pull_requests:
   do_not_increment_build_number: true
@@ -16,6 +17,7 @@ install:
   - npm install -g electron-forge
   - npm install --ignore-scripts
 build_script:
-  - npm run test
+  - npm run lint
   - npm run make
-test: off
+test_script:
+  - npm run test

@@ -127,7 +127,7 @@ const createWindow = async () => {
 
   // Emitted when close clicked
   mainWindow.on('close', (e) => {
-    if (!app.isQuiting) {
+    if (!app.isQuiting && process.env.NODE_ENV !== 'test') {
       e.preventDefault()
 
       mainWindow.hide()
