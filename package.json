@@ -6,7 +6,7 @@
   "main": "src/js/index.js",
   "scripts": {
     "start": "electron-forge start",
-    "test": "NODE_ENV=test mocha",
+    "test": "mocha",
     "package": "electron-forge package",
     "make": "electron-forge make",
     "lint": "eslint --ext .js,.vue,.html src/ test/",

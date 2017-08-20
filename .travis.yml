@@ -9,6 +9,7 @@ matrix:
   include:
   - env: BUILD_ARCH=x64
     addons:
+      chrome: stable
       apt:
         packages:
           - rpm
@@ -21,6 +22,7 @@ matrix:
           - libnss3
   - env: BUILD_ARCH=ia32
     addons:
+      chrome: stable
       apt:
         packages:
           - rpm

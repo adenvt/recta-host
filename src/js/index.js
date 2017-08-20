@@ -12,6 +12,7 @@ let mainWindow
 let tray
 
 const isDevMode = process.execPath.match(/[\\/]electron/)
+const isTestMode = (process.argv || []).indexOf('--testing') !== -1
 const isHidden = (process.argv || []).indexOf('--hidden') !== -1
 
 if (isDevMode) enableLiveReload()
@@ -127,7 +128,7 @@ const createWindow = async () => {
 
   // Emitted when close clicked
   mainWindow.on('close', (e) => {
-    if (!app.isQuiting && process.env.NODE_ENV !== 'test') {
+    if (!app.isQuiting && !isTestMode) {
       e.preventDefault()
 
       mainWindow.hide()
