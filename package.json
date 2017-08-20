@@ -113,6 +113,7 @@
     "eslint-plugin-standard": "^3.0.1",
     "eslint-plugin-vue": "beta",
     "mocha": "^3.5.0",
+    "mocha-logger": "^1.0.5",
     "spectron": "^3.7.2"
   }
 }
