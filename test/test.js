@@ -47,7 +47,6 @@ describe('Application launch', function () {
 
   it('Main component must be shown', () => {
     return new Promise((resolve, reject) => {
-
       // Issue with LibUsb init on travis, force success
       // https://github.com/tessel/node-usb/issues/194
       if (process.env.TRAVIS)
