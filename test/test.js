@@ -11,7 +11,7 @@ if (PLATFORM === 'win32')
   APP_PATH += '.exe'
 
 describe('Application launch', function () {
-  this.timeout(30000)
+  this.timeout(120000)
 
   before(function () {
     this.app = new Application({
