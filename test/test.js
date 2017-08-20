@@ -2,14 +2,20 @@ const path = require('path')
 const assert = require('assert')
 const Application = require('spectron').Application
 
+const PLATFORM = process.platform
 const ARCH = process.env.BUILD_ARCH || process.arch
+
+let APP_PATH = `../out/recta-host-${PLATFORM}-${ARCH}/recta-host`
+
+if (PLATFORM === 'win32')
+  APP_PATH += '.exe'
 
 describe('Application launch', function () {
   this.timeout(10000)
 
   before(function () {
     this.app = new Application({
-      path: path.join(__dirname, `../out/recta-host-linux-${ARCH}/recta-host`),
+      path: path.join(__dirname, APP_PATH),
       args: ['--testing'],
     })
     return this.app.start()
