@@ -10,8 +10,7 @@
     "package": "electron-forge package",
     "make": "electron-forge make",
     "lint": "eslint --ext .js,.vue,.html src/ test/",
-    "fix": "eslint --fix --ext .js,.vue,.html src/ test/",
-    "ci": "npm run lint && electron-forge package -a $BUILD_ARCH && npm run test"
+    "fix": "eslint --fix --ext .js,.vue,.html src/ test/"
   },
   "keywords": [
     "printer"
