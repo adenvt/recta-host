@@ -24,14 +24,13 @@ describe('Application launch', function () {
   })
 
   afterEach(() => {
-    if (this.app && this.app.isRunning()) {
-      return this.app.client.getMainProcessLogs().then((logs) => {
-        if (logs.length)
-          console.log(logs)
+    return this.app.client.getMainProcessLogs().then((logs) => {
+      if (logs.length)
+        console.log(logs)
 
+      if (this.app && this.app.isRunning())
         return this.app.stop()
-      })
-    }
+    })
   })
 
   it('Windows must be shown', () => {

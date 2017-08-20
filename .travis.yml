@@ -22,6 +22,8 @@ matrix:
           - libnss3
           - libxtst6
           - libasound2
+          - libusb-0.1-4
+          - libusb-1.0-0
   - env: BUILD_ARCH=ia32
     addons:
       chrome: stable
@@ -37,6 +39,8 @@ matrix:
           - libnss3:i386
           - libxtst6:i386
           - libasound2:i386
+          - libusb-0.1-4:i386
+          - libusb-1.0-0:i386
           - gcc-multilib
           - g++-multilib
 cache:
