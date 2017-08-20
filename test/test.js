@@ -12,7 +12,7 @@ if (PLATFORM === 'win32')
   APP_PATH += '.exe'
 
 describe('Application launch', function () {
-  this.timeout(120000)
+  this.timeout(60000)
 
   beforeEach(() => {
     this.app = new Application({
@@ -25,8 +25,12 @@ describe('Application launch', function () {
 
   afterEach(() => {
     return this.app.client.getMainProcessLogs().then((logs) => {
-      if (logs.length)
-        console.log(logs)
+      if (logs.length) {
+        logs.forEach((log) => {
+          if (log.trim())
+            console.log(log.trim())
+        })
+      }
 
       if (this.app && this.app.isRunning())
         return this.app.stop()
@@ -45,20 +49,13 @@ describe('Application launch', function () {
     })
   })
 
-  it('Main component must be shown', () => {
-    return new Promise((resolve, reject) => {
-      // Issue with LibUsb init on travis, force success
-      // https://github.com/tessel/node-usb/issues/194
-      if (process.env.TRAVIS)
-        return resolve()
-
-      this.app.client.waitUntilWindowLoaded(30000).then(() => {
+  // Issue with LibUsb init on travis
+  // https://github.com/tessel/node-usb/issues/194
+  if (!process.env.TRAVIS) {
+    it('Main component must be shown', () => {
+      return this.app.client.waitUntilWindowLoaded(30000).then(() => {
         return this.app.client.waitUntilTextExists('#app-name', 'Recta Host', 30000)
-      }).then(() => {
-        return resolve()
-      }).catch((e) => {
-        return reject(e)
       })
     })
-  })
+  }
 })

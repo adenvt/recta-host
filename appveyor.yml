@@ -12,7 +12,11 @@ platform:
   - x86
   - x64
 cache:
-  - '%AppData%/npm-cache'
+  - '%AppData%\npm-cache'
+  - '%AppData%\npm\node_modules'
+  - '%AppData%\npm\electron-forge'
+  - '%AppData%\npm\electron-forge.cmd'
+  - '%USERPROFILE%\.electron'
   - node_modules
 install:
   - ps: Install-Product node $env:nodejs_version
