@@ -1,3 +1,9 @@
+os: unstable
+version: 0.1.0+{build}
+skip_commits:
+  message: /.*\[skip appveyor\].*/
+pull_requests:
+  do_not_increment_build_number: true
 image:
   - Visual Studio 2015
 environment:
@@ -9,12 +15,12 @@ cache:
   - '%AppData%/npm-cache'
   - node_modules
 install:
-  - ps: $env:package_version = (Get-Content -Raw -Path package.json | ConvertFrom-Json).version
-  - ps: Update-AppveyorBuild -Version "$(package_version)-$env:APPVEYOR_BUILD_NUMBER"
   - ps: Install-Product node $env:nodejs_version
-  - npm install -g electron-forge
+  - electron-forge --version || npm install -g electron-forge
   - npm install --ignore-scripts
+  - node node_modules/electron-chromedriver/download-chromedriver.js
 build_script:
+  - npm run lint
+  - npm run package
+test_script:
   - npm run test
-  - npm run make
-test: off

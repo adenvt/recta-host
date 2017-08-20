@@ -6,7 +6,8 @@
     "plugin:import/warnings"
   ],
   "env": {
-    "node": true
+    "node": true,
+    "mocha": true
   },
   "plugins": ["import", "html"],
   "parserOptions": {

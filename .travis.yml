@@ -9,31 +9,59 @@ matrix:
   include:
   - env: BUILD_ARCH=x64
     addons:
+      chrome: stable
       apt:
         packages:
           - rpm
           - dpkg
           - fakeroot
           - libudev-dev
+          - libxss1
+          - libgtk2.0-0
+          - libgconf-2-4
+          - libnss3
+          - libxtst6
+          - libasound2
+          - libusb-0.1-4
+          - libusb-1.0-0
   - env: BUILD_ARCH=ia32
     addons:
+      chrome: stable
       apt:
         packages:
           - rpm
           - dpkg
           - fakeroot
+          - multiarch-support
           - libudev-dev:i386
+          - libxss1:i386
+          - libgtk2.0-0:i386
+          - libgconf-2-4:i386
+          - libnss3:i386
+          - libxtst6:i386
+          - libasound2:i386
+          - libusb-0.1-4:i386
+          - libusb-1.0-0:i386
           - gcc-multilib
           - g++-multilib
+  allow_failures:
+    - env: BUILD_ARCH=ia32
+  fast_finish: true
 cache:
   directories:
     - $HOME/.npm
     - node_modules
 install:
-  - npm install -g electron-forge
+  - electron-forge --version || npm install -g electron-forge
   - npm install --ignore-scripts
+  - node node_modules/electron-chromedriver/download-chromedriver.js
+before_script:
+  - "export DISPLAY=:99.0"
+  - "sh -e /etc/init.d/xvfb start"
+  - sleep 3
 script:
+  - npm run lint
+  - electron-forge package -a $BUILD_ARCH
   - npm run test
-  - electron-forge make -a $BUILD_ARCH
 notifications:
   email: false
