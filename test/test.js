@@ -13,7 +13,7 @@ if (PLATFORM === 'win32')
 describe('Application launch', function () {
   this.timeout(120000)
 
-  before(function () {
+  before(() => {
     this.app = new Application({
       path        : path.join(__dirname, APP_PATH),
       args        : ['--testing'],
@@ -22,22 +22,26 @@ describe('Application launch', function () {
     return this.app.start()
   })
 
-  after(function () {
+  after(() => {
     if (this.app && this.app.isRunning())
       return this.app.stop()
   })
 
-  it('Windows must be shown', function () {
+  it('Windows must be shown', () => {
     return this.app.client.getWindowCount().then(function (count) {
       assert.equal(count, 1)
     })
   })
 
-  it('Main component must be shown', function () {
-    return this.app.client.waitUntilTextExists('#app-name', 'Recta Host', 3000).then(function () {
-      assert.ok(1)
-    }).catch(function (e) {
-      assert.fail(e)
+  it('Main component must be shown', () => {
+    return new Promise((resolve) => {
+      this.app.client.waitUntilWindowLoaded(30000).then(() => {
+        return this.app.client.waitUntilTextExists('#app-name', 'Recta Host', 30000)
+      }).then(() => {
+        return resolve()
+      }).catch(function (e) {
+        return reject(e)
+      })
     })
   })
 })
