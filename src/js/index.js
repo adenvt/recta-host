@@ -1,9 +1,11 @@
+import fs from 'fs'
 import path from 'path'
 import url from 'url'
 import { BrowserWindow, Menu, Tray, app, ipcMain } from 'electron'
 import installExtension, { VUEJS_DEVTOOLS } from 'electron-devtools-installer'
 import { enableLiveReload } from 'electron-compile'
 import ELECTRON_SQUIRREL_STARTUP from 'electron-squirrel-startup'
+import minimist from 'minimist'
 import { ICON } from './constant.js'
 
 // Keep a global reference of the window object, if you don't, the window will
@@ -11,11 +13,24 @@ import { ICON } from './constant.js'
 let mainWindow
 let tray
 
-const isDevMode = process.execPath.match(/[\\/]electron/)
-const isTestMode = (process.argv || []).indexOf('--testing') !== -1
-const isHidden = (process.argv || []).indexOf('--hidden') !== -1
+const flags = minimist(process.argv, {
+  boolean: true,
+  default: {
+    dev    : process.execPath.match(/[\\/]electron/),
+    testing: false,
+    hidden : false,
+    debug  : false,
+    log    : app.getPath('home'),
+  },
+})
 
-if (isDevMode) enableLiveReload()
+if (flags.debug) {
+  process.on('uncaughtException', (err) => {
+    fs.appendFileSync(path.join(flags.log, 'recta-error.log'), err)
+  })
+}
+
+if (flags.dev) enableLiveReload()
 
 const isSecondInstance = app.makeSingleInstance((commandLine, workingDirectory) => {
   // Someone tried to run a second instance, we should focus our window.
@@ -42,7 +57,7 @@ const createWindow = async () => {
   mainWindow = new BrowserWindow({
     width : 400,
     height: 600,
-    show  : !isHidden,
+    show  : !flags.hidden,
     icon  : path.join(__dirname, '../img/icons/png/32x32.png'),
   })
 
@@ -114,7 +129,7 @@ const createWindow = async () => {
   }))
 
   // Open the DevTools.
-  if (isDevMode) {
+  if (flags.dev) {
     await installExtension(VUEJS_DEVTOOLS)
     mainWindow.webContents.openDevTools()
   }
@@ -128,7 +143,7 @@ const createWindow = async () => {
 
   // Emitted when close clicked
   mainWindow.on('close', (e) => {
-    if (!app.isQuiting && !isTestMode) {
+    if (!app.isQuiting && !flags.testing) {
       e.preventDefault()
 
       mainWindow.hide()
