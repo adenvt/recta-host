@@ -55,7 +55,7 @@
       },
       "electronWinstallerConfig": {
         "name": "recta_host",
-        "iconUrl": "https://raw.githubusercontent.com/adenvt/recta-host/feature/buildonwindows/src/img/icons/win/icon.ico",
+        "iconUrl": "https://raw.githubusercontent.com/adenvt/recta-host/develop/src/img/icons/win/icon.ico",
         "setupIcon": "src/img/icons/win/icon.ico",
         "setupExe": "recta_host_setup.exe",
         "loadingGif": "src/img/animation/loading.gif"
