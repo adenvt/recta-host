@@ -14,16 +14,18 @@ if (PLATFORM === 'win32')
 describe('Application launch', function () {
   this.timeout(60000)
 
-  beforeEach(() => {
+  before(() => {
     this.app = new Application({
       path        : path.join(__dirname, APP_PATH),
-      args        : ['--testing'],
+      args        : ['--testing', '--debug'],
       startTimeout: 30000,
     })
-    return this.app.start()
+    return this.app.start().then(() => {
+      return this.app.client.waitUntilWindowLoaded(30000)
+    })
   })
 
-  afterEach(() => {
+  after(() => {
     return this.app.client.getMainProcessLogs().then((logs) => {
       if (logs.length) {
         logs.forEach((log) => {
@@ -53,9 +55,7 @@ describe('Application launch', function () {
   // https://github.com/tessel/node-usb/issues/194
   if (!process.env.TRAVIS) {
     it('Main component must be shown', () => {
-      return this.app.client.waitUntilWindowLoaded(30000).then(() => {
-        return this.app.client.waitUntilTextExists('#app-name', 'Recta Host', 30000)
-      })
+      return this.app.client.waitUntilTextExists('#app-name', 'Recta Host', 30000)
     })
   }
 })

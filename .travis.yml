@@ -65,5 +65,7 @@ script:
   - npm run lint
   - electron-forge package -a $BUILD_ARCH
   - npm run test
+after_failure:
+  - cat $HOME\recta-error.log
 notifications:
   email: false
