@@ -50,9 +50,8 @@ matrix:
 cache:
   directories:
     - $HOME/.npm
-    - $HOME/.electron
-    - /usr/local/lib/node_modules
-    - /usr/local/bin/electron-forge
+    - $(npm config get prefix)/lib/node_modules
+    - $(npm config get prefix)/bin/electron-forge
     - node_modules
 install:
   - electron-forge --version || npm install -g electron-forge

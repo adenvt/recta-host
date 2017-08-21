@@ -41,7 +41,10 @@
           "^/\\.",
           "^/[\\w\\.]+\\.log$",
           "^/yarn",
-          "^/node_modules/uws"
+          "^/node_modules/uws",
+          "^/node_modules/\\.cache",
+          "^/test",
+          "^/appveyor\\.yml"
         ],
         "appCopyright": "Copyright (C) 2017 Ade Novid.",
         "icon": "src/img/icons/win/icon.ico",
@@ -51,6 +54,10 @@
           "InternalName": "Recta Host",
           "ProductName": "Recta Host",
           "OriginalFilename": "recta-host.exe"
+        },
+        "download": {
+          "cache": "node_modules/.cache/electron",
+          "quiet": true
         }
       },
       "electronWinstallerConfig": {
