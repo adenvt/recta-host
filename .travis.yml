@@ -9,7 +9,6 @@ matrix:
   include:
   - env: BUILD_ARCH=x64
     addons:
-      chrome: stable
       apt:
         packages:
           - rpm
@@ -26,7 +25,6 @@ matrix:
           - libusb-1.0-0
   - env: BUILD_ARCH=ia32
     addons:
-      chrome: stable
       apt:
         packages:
           - rpm
@@ -66,6 +64,6 @@ script:
   - electron-forge package -a $BUILD_ARCH
   - npm run test
 after_failure:
-  - cat $HOME\recta-error.log
+  - cat $HOME/recta-error.log
 notifications:
   email: false
