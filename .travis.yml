@@ -65,5 +65,5 @@ script:
   - npm run test
 after_failure:
   - cat $HOME/recta-error.log
- notifications:
+notifications:
   slack: recta-project:4FFGkXeZXIJdPYi3Xkp6i9YK
