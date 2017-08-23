@@ -56,8 +56,7 @@
           "OriginalFilename": "recta-host.exe"
         },
         "download": {
-          "cache": "node_modules/.cache/electron",
-          "quiet": true
+          "cache": "node_modules/.cache/electron"
         }
       },
       "electronWinstallerConfig": {
@@ -98,6 +97,7 @@
     "electron-compile": "^6.4.1",
     "electron-config": "^1.0.0",
     "electron-devtools-installer": "^2.0.1",
+    "electron-positioner": "^3.0.0",
     "electron-squirrel-startup": "^1.0.0",
     "lodash": "^4.17.4",
     "minimist": "^1.2.0",

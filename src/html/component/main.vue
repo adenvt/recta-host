@@ -55,9 +55,11 @@
         </div>
         <div class="row">
             <div class="twelve columns">
-                <label>Log</label>
+                <label>
+                  Log
+                  <a href="#" @click.prevent="clearLog">[ Clear ]</a>
+                </label>
                 <div class="u-full-width" id="logs">{{ logs.join('\n') }}</div>
-                <button class="button-default" @click.prevent="clearLog">Clear Logs</button>
             </div>
         </div>
     </form>

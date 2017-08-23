@@ -1,10 +1,11 @@
 import fs from 'fs'
 import path from 'path'
 import url from 'url'
-import { BrowserWindow, Menu, Tray, app, ipcMain } from 'electron'
+import { BrowserWindow, Menu, MenuItem, Tray, app, ipcMain } from 'electron'
 import installExtension, { VUEJS_DEVTOOLS } from 'electron-devtools-installer'
 import { enableLiveReload } from 'electron-compile'
 import ELECTRON_SQUIRREL_STARTUP from 'electron-squirrel-startup'
+import Positioner from 'electron-positioner'
 import minimist from 'minimist'
 import { ICON } from './constant.js'
 
@@ -16,7 +17,7 @@ let tray
 const flags = minimist(process.argv, {
   boolean: true,
   default: {
-    dev    : process.execPath.match(/[\\/]electron/),
+    dev    : !!process.execPath.match(/[\\/]electron/),
     testing: false,
     hidden : false,
     debug  : false,
@@ -61,6 +62,10 @@ const createWindow = async () => {
     icon  : path.join(__dirname, '../img/icons/png/32x32.png'),
   })
 
+  const positioner = new Positioner(mainWindow)
+
+  positioner.move('topRight')
+
   const mainMenu = Menu.buildFromTemplate([
     {
       label  : 'File',
@@ -82,6 +87,14 @@ const createWindow = async () => {
       ],
     },
   ])
+
+  if (flags.dev) {
+    mainMenu.items[0].submenu.insert(1, new MenuItem({ type: 'separator' }))
+    mainMenu.items[0].submenu.insert(2, new MenuItem({
+      label: 'Toggle Developer Tools',
+      role : 'toggledevtools',
+    }))
+  }
 
   Menu.setApplicationMenu(mainMenu)
 

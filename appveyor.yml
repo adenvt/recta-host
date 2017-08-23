@@ -29,3 +29,8 @@ on_failure:
   - ps: Get-Content %userprofile%\recta-error.log
 test_script:
   - npm run test
+notifications:
+  - provider: Slack
+    incoming_webhook:
+      secure: OFFtfKKDuAjky0+Ora5gl19SjGcb912ETMXSyo8B1EA8A6VjXlMO6e6TNHs/cYscRhawijQV/cLSbLGlOaJTEALax8KTRr4RCNqaSq03/II=
+    channel: '#channel'

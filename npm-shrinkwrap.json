@@ -431,6 +431,11 @@
       "from": "electron-devtools-installer@>=2.0.1 <3.0.0",
       "resolved": "https://registry.npmjs.org/electron-devtools-installer/-/electron-devtools-installer-2.2.0.tgz"
     },
+    "electron-positioner": {
+      "version": "3.0.0",
+      "from": "electron-positioner@latest",
+      "resolved": "https://registry.npmjs.org/electron-positioner/-/electron-positioner-3.0.0.tgz"
+    },
     "electron-squirrel-startup": {
       "version": "1.0.0",
       "from": "electron-squirrel-startup@>=1.0.0 <2.0.0",
