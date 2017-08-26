@@ -42,7 +42,7 @@ module.exports = {
     },
   },
   electronWinstallerConfig: {
-    name      : `recta-host-${platform}-${arch}-${version}`,
+    name      : `recta-host-${platform}-${arch}`,
     iconUrl   : 'https://raw.githubusercontent.com/adenvt/recta-host/develop/src/img/icons/win/icon.ico',
     setupIcon : 'src/img/icons/win/icon.ico',
     setupExe  : `recta-host-${platform}-${arch}-${version}-setup.exe`,
