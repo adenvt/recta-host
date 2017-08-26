@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <title>Recta Print - Host</title>
+        <link rel="stylesheet" href="../css/normalize.css"/>
+        <link rel="stylesheet" href="../css/skeleton.css"/>
+        <link rel="stylesheet" href="../css/main.scss">
+    </head>
+    <body>
+        <div class="container">
+            <div id="app"></div>
+        </div>
+        <script type="text/javascript">
+            const Vue = require('vue')
+            const Main = require('./component/main.vue')
+
+            new Vue(Main).$mount('#app')
+        </script>
+    </body>
+</html>

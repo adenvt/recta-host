@@ -1,0 +1,48 @@
+os: unstable
+version: 1.0.0+{build}
+skip_commits:
+  message: /.*\[skip appveyor\].*/
+pull_requests:
+  do_not_increment_build_number: true
+image:
+  - Visual Studio 2015
+environment:
+  nodejs_version: "6"
+platform:
+  - x86
+  - x64
+artifacts:
+  - path: 'out\make\**\*'
+    name: AllBinary
+cache:
+  - '%AppData%\npm-cache'
+  - '%AppData%\npm\node_modules'
+  - '%AppData%\npm\electron-forge'
+  - '%AppData%\npm\electron-forge.cmd'
+  - node_modules
+install:
+  - ps: Install-Product node $env:nodejs_version $env:platform
+  - electron-forge --version || npm install -g electron-forge
+  - npm install --ignore-scripts
+  - node node_modules/electron-chromedriver/download-chromedriver.js
+build_script:
+  - npm run lint
+  - npm run make
+on_failure:
+  - ps: Get-Content %userprofile%\recta-error.log
+test_script:
+  - npm run test
+deploy:
+  description: 'Recta v$(APPVEYOR_REPO_TAG_NAME)'
+  provider: GitHub
+  auth_token:
+    secure: Pbm0ftBxOpWGbiavZdiOj6tEliYkE1pTwwOMjOZE6oEPSzkg9Pp3VXSHFUPO3S6h
+  artifact: AllBinary
+  draft: true
+  on:
+    appveyor_repo_tag: true
+notifications:
+  - provider: Slack
+    incoming_webhook:
+      secure: OFFtfKKDuAjky0+Ora5gl19SjGcb912ETMXSyo8B1EA8A6VjXlMO6e6TNHs/cYscRhawijQV/cLSbLGlOaJTEALax8KTRr4RCNqaSq03/II=
+    channel: '#recta-host'

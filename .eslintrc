@@ -1,0 +1,40 @@
+{
+  "extends": [
+    "standard",
+    "plugin:vue/recommended",
+    "plugin:import/errors",
+    "plugin:import/warnings"
+  ],
+  "env": {
+    "node": true,
+    "mocha": true
+  },
+  "plugins": ["import", "html"],
+  "parserOptions": {
+    "ecmaVersion": 8
+  },
+  "settings": {
+    "html/indent": "+4",
+    "html/html-extensions": [".html"]
+  },
+  "rules": {
+    "curly": ["error", "multi-or-nest"],
+    "comma-dangle": ["error", "always-multiline"],
+    "prefer-const": "error",
+    "import/extensions": "off",
+    "import/order": ["error", { "newlines-between": "never" }],
+    "import/no-extraneous-dependencies": "off",
+    "import/no-unresolved": ["error", { "ignore": ["electron"] }],
+    "linebreak-style": ["error", "unix"],
+    "key-spacing": ["error", {
+      "align": {
+        "beforeColon": false,
+        "afterColon": true,
+        "on": "colon"
+      },
+    }],
+    "quote-props": ["error", "as-needed"],
+    "object-curly-spacing": ["error", "always"],
+    "no-var": "error"
+  }
+}
