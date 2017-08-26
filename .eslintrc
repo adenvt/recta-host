@@ -33,6 +33,7 @@
         "on": "colon"
       },
     }],
+    "quote-props": ["error", "as-needed"],
     "object-curly-spacing": ["error", "always"],
     "no-var": "error"
   }

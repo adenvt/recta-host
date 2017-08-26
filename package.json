@@ -9,8 +9,8 @@
     "test": "mocha",
     "package": "electron-forge package",
     "make": "electron-forge make",
-    "lint": "eslint --ext .js,.vue,.html src/ test/",
-    "fix": "eslint --fix --ext .js,.vue,.html src/ test/"
+    "lint": "eslint --ext .js,.vue,.html src/ test/ ./*.js",
+    "fix": "eslint --fix --ext .js,.vue,.html src/ test/ ./*.js"
   },
   "keywords": [
     "printer"
@@ -22,75 +22,7 @@
   },
   "license": "MIT",
   "config": {
-    "forge": {
-      "make_targets": {
-        "win32": [
-          "squirrel"
-        ],
-        "darwin": [
-          "zip"
-        ],
-        "linux": [
-          "deb",
-          "rpm"
-        ]
-      },
-      "electronPackagerConfig": {
-        "asar": true,
-        "ignore": [
-          "^/\\.",
-          "^/[\\w\\.]+\\.log$",
-          "^/yarn",
-          "^/node_modules/uws",
-          "^/node_modules/\\.cache",
-          "^/test",
-          "^/appveyor\\.yml"
-        ],
-        "appCopyright": "Copyright (C) 2017 Ade Novid.",
-        "icon": "src/img/icons/win/icon.ico",
-        "win32metadata": {
-          "CompanyName": "Recta",
-          "FileDescription": "Recta Host",
-          "InternalName": "Recta Host",
-          "ProductName": "Recta Host",
-          "OriginalFilename": "recta-host.exe"
-        },
-        "download": {
-          "cache": "node_modules/.cache/electron"
-        }
-      },
-      "electronWinstallerConfig": {
-        "name": "recta_host",
-        "iconUrl": "https://raw.githubusercontent.com/adenvt/recta-host/develop/src/img/icons/win/icon.ico",
-        "setupIcon": "src/img/icons/win/icon.ico",
-        "setupExe": "recta_host_setup.exe",
-        "loadingGif": "src/img/animation/loading.gif"
-      },
-      "electronInstallerDebian": {
-        "icon": {
-          "48x48": "src/img/icons/png/48x48.png",
-          "64x64": "src/img/icons/png/64x64.png",
-          "128x128": "src/img/icons/png/128x128.png",
-          "256x256": "src/img/icons/png/256x256.png"
-        }
-      },
-      "electronInstallerRedhat": {
-        "icon": {
-          "48x48": "src/img/icons/png/48x48.png",
-          "64x64": "src/img/icons/png/64x64.png",
-          "128x128": "src/img/icons/png/128x128.png",
-          "256x256": "src/img/icons/png/256x256.png"
-        }
-      },
-      "github_repository": {
-        "owner": "adenvt",
-        "name": "recta-host"
-      },
-      "windowsStoreConfig": {
-        "packageName": "",
-        "name": "rectahost"
-      }
-    }
+    "forge": "./forge.config.js"
   },
   "dependencies": {
     "auto-launch": "^5.0.1",
