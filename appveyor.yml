@@ -21,7 +21,7 @@ cache:
   - '%AppData%\npm\electron-forge.cmd'
   - node_modules
 install:
-  - ps: Install-Product node $env:nodejs_version
+  - ps: Install-Product node $env:nodejs_version $env:platform
   - electron-forge --version || npm install -g electron-forge
   - npm install --ignore-scripts
   - node node_modules/electron-chromedriver/download-chromedriver.js

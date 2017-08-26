@@ -1,8 +1,8 @@
 {
   "name": "recta-host",
   "productName": "recta-host",
-  "version": "0.1.0",
-  "description": "Direct printing from JS",
+  "version": "1.0.0",
+  "description": "Direct printing from Browser",
   "main": "src/js/index.js",
   "scripts": {
     "start": "electron-forge start",
