@@ -61,9 +61,20 @@ before_script:
   - sleep 3
 script:
   - npm run lint
-  - electron-forge package -a $BUILD_ARCH
+  - electron-forge make -a $BUILD_ARCH
   - npm run test
 after_failure:
   - cat $HOME/recta-error.log
 notifications:
   slack: recta-project:4FFGkXeZXIJdPYi3Xkp6i9YK
+deploy:
+  provider: releases
+  api_key:
+    secure: UXy9Qxc/tBB/3lhMASY34snXtmO/urwoF+zYAUcauFQtxLeJ5x0uqW+BfOffaJd1ZlknrvRzaBg55Sy+SUaq96QaPyBQHTx5zm/AFsv6/uub9fBOBOUHyKJOzh3f3FEfb+/YeqzCAlH3BvnK4RUOCyasg//XxgNqFg6lyRF/+LfKj803+xeoZNptompNa4GPiJhCXyNn5/DEQ/1xJdSq3r12hZh+YPE5scGCyXfxx0gAKfCnhpnHXSmQkmk8xlRkwkg3qVezvCrYgEl9VRt0lkTLGeqQea5/cOsyonSL/diemNsOuPHjJl6Y4oR7MgHh/hnm9AIn6I3ihazhCDNIX7G/FQnsukQoYcDVjJ83pd7/frk30LfLzpNAbJzHJZC1HvcS5pX4L8dcoEBknTv+miOIsLzIq5kIw7GA2wcQGX3FR9Ny/FOu58EX7CmZ8jpSNzJjF/CKkXT7vHsajnpANvfnvXOcyPZ0LbAtwAaDo/+VoUV4ShY2Tq4ue4omwm/io98A/Uh4EAO3teREtwuLL7Z2olxiRffHepmCRr2bqGsN+qWWAHwItpKAGiKo98XiyvfEOYOne/kOloe7aoj3VzrNzSQ4rGCmt5d/7ggUWIX2nLZPMrZtTHkWoF8jHMP3MphlPmcfKuSlEolifs96C574dR8UYB56jTu3JKPDKt8=
+  file_glob: true
+  file: out/make/*
+  draft: true
+  tag_name: $TRAVIS_TAG
+  skip_cleanup: true
+  on:
+    tags: true
