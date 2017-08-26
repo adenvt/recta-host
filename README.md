@@ -58,9 +58,9 @@ You can find your installer on folder `out/make`
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
 
-[win32-ia32-exe]: https://github.com/adenvt/recta-host/releases/download/1.0.0/recta-host-win32-ia32-1.0.0.exe
+[win32-ia32-exe]: https://github.com/adenvt/recta-host/releases/download/1.0.0/recta-host-win32-ia32-1.0.0-setup.exe
 [win32-ia32-zip]: https://github.com/adenvt/recta-host/releases/download/1.0.0/recta-host-win32-ia32-1.0.0.zip
-[win32-x64-exe]: https://github.com/adenvt/recta-host/releases/download/1.0.0/recta-host-win32-x64-1.0.0.exe
+[win32-x64-exe]: https://github.com/adenvt/recta-host/releases/download/1.0.0/recta-host-win32-x64-1.0.0-setup.exe
 [win32-x64-zip]: https://github.com/adenvt/recta-host/releases/download/1.0.0/recta-host-win32-x64-1.0.0.zip
 [linux-ia32-deb]: https://github.com/adenvt/recta-host/releases/download/1.0.0/recta-host-linux-ia32-1.0.0.deb
 [linux-ia32-rpm]: https://github.com/adenvt/recta-host/releases/download/1.0.0/recta-host-linux-ia32-1.0.0.rpm
