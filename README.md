@@ -4,6 +4,7 @@
 
 [![Build Status](https://travis-ci.org/adenvt/recta-host.svg?branch=master)](https://travis-ci.org/adenvt/recta-host)
 [![Build status](https://ci.appveyor.com/api/projects/status/fpyk12ifj4j4re57/branch/master?svg=true)](https://ci.appveyor.com/project/adenvt/recta-host/branch/master)
+[![GitHub version](https://badge.fury.io/gh/adenvt%2Frecta-host.svg)](https://badge.fury.io/gh/adenvt%2Frecta-host)
 
 ## Installation
 
